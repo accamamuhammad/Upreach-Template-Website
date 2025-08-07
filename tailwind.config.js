@@ -8,8 +8,9 @@ module.exports = {
   theme: {
     extend: {
       backgroundColor: {
-        primary: "rgb(228,226,221)",
-        secondary: "rgba(23,23,22,1)",
+        primary: "rgb(10,34,40)",
+        secondary: "rgb(114,197,128)",
+        tertiary: "rgb(40,61,66)",
       },
       animation: {},
     },
