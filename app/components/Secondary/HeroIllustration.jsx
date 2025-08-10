@@ -1,7 +1,6 @@
 import React from "react";
 import Image from "next/image";
 import HeroImageMobile from "../../assets/Hero-main-Mobile.png";
-import HappyIcon from "../../assets/Happy.png";
 import TrophyICon from "../../assets/trophy.png";
 import LightIcon from "../../assets/lightning.png";
 import TrendIcon from "../../assets/trend.png";
