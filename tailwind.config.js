@@ -12,7 +12,15 @@ module.exports = {
         secondary: "rgb(114,197,128)",
         tertiary: "rgb(40,61,66)",
       },
-      animation: {},
+      animation: {
+        "infinite-scroll": "infinite-scroll 20s linear infinite",
+      },
+      keyframes: {
+        "infinite-scroll": {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(calc(-50% - 96px))" },
+        },
+      },
     },
   },
   plugins: [],

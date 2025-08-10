@@ -5,6 +5,7 @@
 import React from "react";
 import { useState } from "react";
 import Image from "next/image";
+import PrimaryBtn from "../Secondary/PrimaryBtn";
 import Logo from "../../assets/Logo-with-text.png";
 import Hamburger from "../../assets/menu-icon.png";
 import Close from "../../assets/close-icon.png";
@@ -17,7 +18,7 @@ const Nav = () => {
   };
 
   return (
-    <nav className="bg-primary p-5 w-screen h-fit relative flex flex-row items-center justify-between">
+    <nav className="bg-primary z-50 p-5 lg:px-14 w-screen h-fit relative flex flex-row items-center justify-between">
       {/* Logo Section */}
       <Image width={115} height={115} src={Logo} alt="Logo"></Image>
       {/* Links Section */}
@@ -25,7 +26,7 @@ const Nav = () => {
         className={
           toggle
             ? "w-full text-center pb-6 py-2 gap-7 absolute top-16 left-1/2 -translate-x-1/2 bg-primary flex flex-col items-center justify-center"
-            : "hidden md:flex text-lg font-bold flex-row items-center justify-center gap-14"
+            : "hidden lg:flex text-lg font-bold flex-row items-center justify-center gap-14 bg-primary"
         }
       >
         <li className="hover:text-opacity-80 cursor-pointer text-white text-sm text-opacity-65">
@@ -43,9 +44,9 @@ const Nav = () => {
         <li className="hover:text-opacity-80 cursor-pointer text-white text-sm text-opacity-65">
           Blog
         </li>
-        <button className="bg-green-400 hover:bg-green-500 text-green-950 py-2.5 px-5 md:hidden rounded-full">
-          Contact Us
-        </button>
+        <div className="lg:hidden">
+          <PrimaryBtn title="Contact Us" />
+        </div>
       </ul>
       {/* Menu Toggle Section */}
       <Image
@@ -54,10 +55,10 @@ const Nav = () => {
         src={toggle ? Close : Hamburger}
         alt="Toggle"
         onClick={handleToggleNav}
-        className="cursor-pointer md:hidden"
+        className="cursor-pointer lg:hidden"
       ></Image>
       {/* Button */}
-      <button className="bg-green-400 hover:bg-green-500 text-green-950 py-2.5 px-5 hidden md:block rounded-full">
+      <button className="bg-green-400 hover:bg-green-500 text-green-950 py-2 px-5 text-[0.9rem] hidden lg:block rounded-full">
         Contact Us
       </button>
     </nav>
