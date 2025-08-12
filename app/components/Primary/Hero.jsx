@@ -12,11 +12,11 @@ const Hero = () => {
         {/* Text */}
         <div className="h-full xl:h-fit xl:gap-20 flex flex-col justify-center items-center lg:items-start">
           <div className="h-full space-y-8 flex items-center justify-center flex-col lg:items-start lg:justify-center xl:pt-14">
-            <h1 className="text-[2rem] leading-[2.65rem] sm:text-[2.25rem] sm:leading-[2.8rem] md:text-6xl lg:text-[3.5rem] ">
+            <h1 className="text-[2rem] leading-[2.65rem] sm:text-[2.25rem] sm:leading-[2.8rem] md:text-6xl lg:text-[3.8rem] ">
               Grow your business, <br className="lg:hidden xl:block" />
               master every move.
             </h1>
-            <p className="text-[0.95rem] leading-7 text-[#C4C4C4] opacity-85">
+            <p className="text-[0.95rem] font-thin leading-7 text-[#C4C4C4] opacity-85">
               Helping businesses thrive with innovative digital strategies,{" "}
               <br className="hidden md:block" />
               creative solutions, and measurable outcomes

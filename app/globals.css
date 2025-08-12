@@ -5,6 +5,11 @@
 /* Preline UI */
 @import "preline/variants.css";
 
+@font-face {
+  font-family: "satoshi-bold";
+  src: url("../app/Fonts/WEB/fonts/Satoshi-Bold.ttf");
+}
+
 /* Custom variables */
 :root {
   --main-background: #f3f5ff;
@@ -15,4 +20,9 @@
 body {
   color: var(--main-text);
   background-color: var(--main-background);
+  font-family: sans-serif;
+}
+
+h1 {
+  font-family: "satoshi-bold";
 }
