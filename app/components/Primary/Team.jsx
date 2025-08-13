@@ -28,7 +28,6 @@ const Team = () => {
           potential.
         </p>
       </section>
-
       {/* Auto-scrolling team members */}
       <section className="scrollbar-hide w-full h-fit flex flex-row overflow-x-auto gap-6 px-6 scrollbar-hide">
         {data.map((person, index) => (
