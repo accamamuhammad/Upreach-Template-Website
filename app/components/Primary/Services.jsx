@@ -34,7 +34,10 @@ const Services = () => {
   ];
 
   return (
-    <main className="bg-[rgb(250,250,250)] pt-14 pb-10 flex flex-col items-center justify-center">
+    <main
+      id="service"
+      className="bg-[rgb(250,250,250)] scroll-mt-14 pt-14 pb-10 flex flex-col items-center justify-center"
+    >
       <div className="space-y-4 text-center">
         <h1 className="text-5xl font-bold">What we Offer</h1>
         <p className="text-[1.1rem] opacity-80">

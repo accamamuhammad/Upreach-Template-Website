@@ -54,7 +54,10 @@ const Testimonials = () => {
   ];
 
   return (
-    <main className="w-screen h-fit bg-white pt-14 pb-10 flex flex-col items-center justify-center">
+    <main
+      id="testimonials"
+      className="w-screen h-fit scroll-mt-12 bg-white pt-14 pb-10 flex flex-col items-center justify-center"
+    >
       <div className="space-y-4 text-center">
         <h1 className="px-5  text-5xl font-bold text-[rgb(10,10,10)]">
           What Our Clients Say

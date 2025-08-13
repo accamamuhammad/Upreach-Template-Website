@@ -9,7 +9,7 @@ import CTA from "./components/Primary/CTA";
 
 export default function Home() {
   return (
-    <main className="bg-primary font-sans w-[100vw]">
+    <main className="bg-primary font-sans w-[100vw] scroll-smooth">
       <Nav />
       <Hero />
       <Services />

@@ -17,7 +17,10 @@ const Team = () => {
   ];
 
   return (
-    <main className="text-white py-16 space-y-12 flex flex-col items-center justify-center">
+    <main
+      id="team"
+      className="text-white scroll-mt-14 py-16 space-y-12 flex flex-col items-center justify-center"
+    >
       <section className="space-y-4 text-center">
         <h1 className="px-5 text-5xl leading-[3.35rem] font-medium">
           Meet our amazing team.

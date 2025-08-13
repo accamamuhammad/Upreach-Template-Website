@@ -4,6 +4,7 @@
 // Import all Assets
 import React from "react";
 import { useState } from "react";
+import Link from "next/link";
 import Image from "next/image";
 import PrimaryBtn from "../Secondary/PrimaryBtn";
 import Logo from "../../assets/Logo-with-text.png";
@@ -18,14 +19,14 @@ const Nav = () => {
   };
 
   const links = [
-    { title: "Services", link: "/services" },
-    { title: "Work", link: "/work" },
-    { title: "Testimonials", link: "/testimonials" },
-    { title: "About", link: "/about" },
+    { title: "Services", link: "#service" },
+    { title: "About Us", link: "#about" },
+    { title: "Testimonials", link: "#testimonials" },
+    { title: "Team", link: "#team" },
   ];
 
   return (
-    <nav className="bg-primary sticky top-0 z-50 py-5 px-8 lg:px-14 w-screen h-fit flex flex-row items-center justify-between">
+    <nav className="bg-primary scroll-smooth sticky top-0 z-50 py-5 px-8 lg:px-14 w-screen h-fit flex flex-row items-center justify-between">
       {/* Logo Section */}
       <Image
         width={115}
@@ -47,7 +48,12 @@ const Nav = () => {
             key={index}
             className="opacity-80 hover:opacity-100 cursor-pointer text-white text-[0.95rem] font-thin"
           >
-            {link.title}
+            <Link
+              href={link.link}
+              className="cursor-pointer hover:text-blue-500"
+            >
+              {link.title}
+            </Link>
           </li>
         ))}
         <div className="lg:hidden">

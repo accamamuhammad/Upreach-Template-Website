@@ -9,7 +9,10 @@ const AboutUs = () => {
   ];
 
   return (
-    <main className="py-16 space-y-12 flex flex-col items-center justify-center">
+    <main
+      id="about"
+      className="py-16 space-y-12  scroll-mt-6 flex flex-col items-center justify-center"
+    >
       <section className="text-center text-white space-y-5">
         <h1 className="px-5 text-5xl leading-[3.35rem] font-medium">
           Why we're the right choice
