@@ -20,8 +20,12 @@ module.exports = {
           "0%": { transform: "translateX(0)" },
           "100%": { transform: "translateX(calc(-50% - 96px))" },
         },
+        "infinite-scroll-hr": {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
       },
     },
   },
-  plugins: [],
+  plugins: [require("tailwind-scrollbar-hide")],
 };

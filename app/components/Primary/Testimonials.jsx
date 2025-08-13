@@ -56,7 +56,7 @@ const Testimonials = () => {
   return (
     <main className="w-screen h-fit bg-white pt-14 pb-10 flex flex-col items-center justify-center">
       <div className="space-y-4 text-center">
-        <h1 className="px-5 text-5xl font-bold text-[rgb(10,10,10)]">
+        <h1 className="px-5  text-5xl font-bold text-[rgb(10,10,10)]">
           What Our Clients Say
         </h1>
         <p className="text-lg opacity-80 text-[rgb(10,10,10)]">

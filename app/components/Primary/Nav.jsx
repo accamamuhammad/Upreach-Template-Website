@@ -22,7 +22,6 @@ const Nav = () => {
     { title: "Work", link: "/work" },
     { title: "Testimonials", link: "/testimonials" },
     { title: "About", link: "/about" },
-    { title: "Blog", link: "/blog" },
   ];
 
   return (
