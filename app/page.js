@@ -2,6 +2,7 @@ import Nav from "./components/Primary/Nav";
 import Hero from "./components/Primary/Hero";
 import Services from "./components/Primary/Services";
 import AboutUs from "./components/Primary/AboutUs";
+import Testimonials from "./components/Primary/Testimonials";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <Hero />
       <Services />
       <AboutUs />
+      <Testimonials />
     </main>
   );
 }
