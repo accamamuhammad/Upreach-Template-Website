@@ -6,6 +6,7 @@ import Testimonials from "./components/Primary/Testimonials";
 import Team from "./components/Primary/Team";
 import QandA from "./components/Primary/QandA";
 import CTA from "./components/Primary/CTA";
+import Footer from "./components/Primary/Footer";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       <Team />
       <QandA />
       <CTA />
+      <Footer />
     </main>
   );
 }

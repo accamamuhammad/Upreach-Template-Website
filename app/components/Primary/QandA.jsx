@@ -64,6 +64,7 @@ const QandA = () => {
                 alt={openIndex === index ? "Close" : "Plus"}
                 width={15}
                 height={15}
+                className="cursor-pointer transition-transform duration-200 transform hover:scale-110 ml-1.5"
               />
             </button>
             {openIndex === index && faq.answer && (

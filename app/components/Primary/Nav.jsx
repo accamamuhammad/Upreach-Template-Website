@@ -34,7 +34,7 @@ const Nav = () => {
         src={Logo}
         alt="Logo"
         className="relative"
-      ></Image>
+      />
       {/* Links Section */}
       <ul
         className={
