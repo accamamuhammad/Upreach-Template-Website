@@ -34,10 +34,10 @@ const Services = () => {
   ];
 
   return (
-    <main className="bg-[rgb(250,250,250)] pt-12 pb-10 flex flex-col items-center justify-center">
+    <main className="bg-[rgb(250,250,250)] pt-14 pb-10 flex flex-col items-center justify-center">
       <div className="space-y-4 text-center">
-        <h1 className="text-4xl font-bold">What we Offer</h1>
-        <p className="font-medium">
+        <h1 className="text-5xl font-bold">What we Offer</h1>
+        <p className="text-[1.1rem] opacity-80">
           Comprehensive solutions for business success.
         </p>
       </div>
@@ -57,7 +57,7 @@ const Services = () => {
             </div>
             <div className="space-y-2">
               <h2 className="text-xl">{service.title}</h2>
-              <p className="mt-2 text-sm leading-6 font-thin text-[0.9rem] ">
+              <p className="mt-2 text-sm leading-6 opacity-80 text-[0.9rem] ">
                 {service.description}
               </p>
             </div>
