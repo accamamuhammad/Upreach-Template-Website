@@ -26,7 +26,7 @@ const Nav = () => {
   ];
 
   return (
-    <nav className="bg-primary scroll-smooth sticky top-0 z-50 py-5 px-8 lg:px-14 w-screen h-fit flex flex-row items-center justify-between">
+    <nav className="bg-primary scroll-smooth top-0 z-50 py-5 pl-4 pr-7 lg:px-14 w-screen h-fit flex flex-row items-center justify-between">
       {/* Logo Section */}
       <Image
         width={115}
