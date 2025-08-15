@@ -23,7 +23,13 @@ const Hero = () => {
             </p>
             {/* Buttons */}
             <div className="w-full flex flex-col items-center justify-center gap-3 md:flex-row lg:justify-start">
-              <PrimaryBtn title="Book a call" />
+              <a
+                href="https://tidycal.com/protusweb/15-minute-meeting"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <PrimaryBtn title="Book a call" />
+              </a>
               <SecondaryBtn title="Learn more" />
             </div>
           </div>

@@ -70,9 +70,14 @@ const Nav = () => {
         className="cursor-pointer lg:hidden"
       ></Image>
       {/* Button */}
-      <button className="bg-green-400 hover:bg-green-500 text-green-950 py-2 px-5 text-[0.9rem] hidden lg:block rounded-full">
-        Contact Us
-      </button>
+      <a
+        href="https://tidycal.com/protusweb/15-minute-meeting"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="bg-green-400 hover:bg-green-500 text-green-950 py-2 px-5 text-[0.9rem] hidden lg:block rounded-full"
+      >
+        Free Consultation
+      </a>
     </nav>
   );
 };
