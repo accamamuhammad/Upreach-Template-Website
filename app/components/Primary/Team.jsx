@@ -1,6 +1,8 @@
 "use client";
 
 import Image from "next/image";
+import { motion } from "framer-motion";
+
 import Image1 from "../../assets/Team-1.jpg";
 import Image2 from "../../assets/Team-2.jpg";
 import Image3 from "../../assets/Team-3.jpg";
@@ -17,40 +19,81 @@ const Team = () => {
   ];
 
   return (
-    <main
+    <section
       id="team"
-      className="text-white scroll-mt-14 py-16 space-y-12 flex flex-col items-center justify-center"
+      className="py-24 scroll-mt-24 flex flex-col items-center"
     >
-      <section className="space-y-4 text-center">
-        <h1 className="px-5 text-5xl leading-[3.35rem] font-medium">
-          Meet our amazing team.
-        </h1>
-        <p className="text-[0.95rem] opacity-65 px-7 leading-7 font-thin">
-          We are a team of strategists, creatives, and innovators dedicated to
-          <br className="hidden lg:block " /> helping brands reach their full
-          potential.
+      {/* HEADER */}
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7 }}
+        viewport={{ once: true }}
+        className="text-center max-w-3xl mx-auto px-6"
+      >
+        <h2 className="text-4xl md:text-5xl font-semibold text-white tracking-tight">
+          Meet Our <span className="text-green-500">Leadership</span>
+        </h2>
+
+        <p className="mt-6 text-gray-300 text-lg leading-relaxed">
+          A team of strategists, creatives, and innovators building scalable
+          brand systems.
         </p>
-      </section>
-      {/* Auto-scrolling team members */}
-      <section className="scrollbar-hide w-full h-fit flex flex-row overflow-x-auto gap-6 px-6 scrollbar-hide">
-        {data.map((person, index) => (
-          <div
-            key={index}
-            className="flex-shrink-0 relative w-[17rem] h-[22rem] rounded-xl overflow-hidden"
-          >
-            <Image
-              src={person.image}
-              alt={person.title}
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute left-1/2 -translate-x-1/2 bottom-5 text-center">
-              <h1 className="font-semibold text-xl">{person.title}</h1>
-              <p className="opacity-75">{person.role}</p>
-            </div>
-          </div>
-        ))}
-      </section>
-    </main>
+      </motion.div>
+
+      {/* TEAM ROW */}
+      <motion.div
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+        variants={{
+          hidden: {},
+          show: {
+            transition: { staggerChildren: 0.15 },
+          },
+        }}
+        className="mt-16 w-full overflow-x-auto px-6 scrollbar-hide"
+      >
+        <div className="flex gap-8 w-max">
+          {data.map((person, index) => (
+            <motion.div
+              key={index}
+              variants={{
+                hidden: { opacity: 0, y: 40 },
+                show: {
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 0.6 },
+                },
+              }}
+              whileHover={{ y: -10 }}
+              className="relative w-[18rem] h-[24rem] rounded-3xl overflow-hidden group cursor-pointer"
+            >
+              {/* Image */}
+              <Image
+                src={person.image}
+                alt={person.title}
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+
+              {/* Dark gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+
+              {/* Info */}
+              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-center w-[85%] backdrop-blur-md bg-white/10 rounded-2xl py-4 px-3 border border-white/20">
+                <h4 className="font-semibold text-lg text-white">
+                  {person.title}
+                </h4>
+                <p className="text-sm text-gray-300">
+                  {person.role}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
+    </section>
   );
 };
 

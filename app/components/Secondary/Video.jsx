@@ -1,6 +1,9 @@
 "use client";
+
 import React, { useState } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
+
 import Play from "../../assets/play.png";
 import MainImage from "../../assets/about-us-main.png";
 
@@ -8,43 +11,63 @@ const Video = () => {
   const [showVideo, setShowVideo] = useState(false);
 
   return (
-    <section className="w-[75%] lg:w-[60%] relative md:h-96 lg:h-fit aspect-square sm:aspect-video md:aspect-auto lg:aspect-video rounded-[2rem] border-[10px] border-[rgb(40,61,66)]">
-      {/* Main Image */}
+    <div className="relative w-full max-w-4xl mx-auto aspect-video rounded-3xl overflow-hidden shadow-2xl">
+      
+      {/* IMAGE PREVIEW */}
       {!showVideo && (
         <>
-          <Image
-            src={MainImage}
-            alt="Main"
-            layout="fill"
-            objectFit="cover"
-            className="rounded-[2rem]"
-          />
-          {/* Button */}
-          <button
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="relative w-full h-full group cursor-pointer"
             onClick={() => setShowVideo(true)}
-            className="z-20 w-[12.5rem] md:w-[13rem] md:text-[1.1rem] absolute bottom-5 left-1/2 -translate-x-1/2 py-3 gap-2 text-[rgb(10,10,10)] flex items-center justify-center bg-[rgb(107,230,129)] rounded-[2rem] font-medium hover:bg-[#5CF28E] transition-colors duration-300"
           >
-            <span className="bg-[rgb(10,10,10)] rounded-full px-2 py-2 aspect-square flex items-center justify-center">
-              <Image width={10} height={10} src={Play} alt="play video" />
-            </span>
-            Inside our process
-          </button>
+            <Image
+              src={MainImage}
+              alt="Inside our process"
+              fill
+              className="object-cover group-hover:scale-105 transition-transform duration-700"
+              priority
+            />
+
+            {/* Dark Overlay */}
+            <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition duration-500" />
+
+            {/* PLAY BUTTON */}
+            <motion.div
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              className="absolute inset-0 flex items-center justify-center"
+            >
+              <div className="relative flex items-center gap-4 bg-green-400 text-black px-6 py-4 rounded-full font-medium shadow-xl">
+
+                {/* Pulse Ring */}
+                <span className="absolute w-full h-full rounded-full bg-green-400 animate-ping opacity-30"></span>
+
+                <span className="relative bg-black rounded-full p-3 flex items-center justify-center">
+                  <Image src={Play} alt="play video" width={14} height={14} />
+                </span>
+
+                <span className="relative text-sm md:text-base">
+                  Inside our process
+                </span>
+              </div>
+            </motion.div>
+          </motion.div>
         </>
       )}
 
-      {/* Video */}
+      {/* YOUTUBE VIDEO */}
       {showVideo && (
         <iframe
-          className="rounded-[2rem] w-full h-full"
+          className="w-full h-full"
           src="https://www.youtube.com/embed/xnOwOBYaA3w?autoplay=1"
           title="YouTube video player"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerPolicy="strict-origin-when-cross-origin"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
-        ></iframe>
+        />
       )}
-    </section>
+    </div>
   );
 };
 

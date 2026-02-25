@@ -1,4 +1,7 @@
+"use client";
+
 import React from "react";
+import { motion } from "framer-motion";
 import Video from "../Secondary/Video";
 
 const AboutUs = () => {
@@ -9,32 +12,72 @@ const AboutUs = () => {
   ];
 
   return (
-    <main
+    <section
       id="about"
-      className="py-16 space-y-12  scroll-mt-6 flex flex-col items-center justify-center"
+      className="bg-primary text-white py-24 px-6 lg:px-16 scroll-mt-24"
     >
-      <section className="text-center text-white space-y-5">
-        <h1 className="px-5 text-5xl leading-[3.35rem] font-medium">
-          Why we're the right choice
-        </h1>
-        <p className="text-[0.95rem] opacity-65 px-7 leading-7 font-thin">
+      {/* HEADER */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        className="text-center max-w-3xl mx-auto"
+      >
+        <h2 className="text-4xl md:text-5xl font-semibold leading-tight tracking-tight">
+          Why we’re the <span className="text-green-400">right choice</span>
+        </h2>
+
+        <p className="mt-6 text-lg text-white/70 leading-relaxed">
           We create impactful strategies, refine brand positioning, and drive
-          real <br className="hidden sm:block" />
-          results through smart content and scalable campaigns.
+          real results through intelligent content and scalable campaigns.
         </p>
-      </section>
-      <Video />
-      <section className="w-full sm:w-[75%] md:w-[60%] lg:w-[55%] sm:px-5 gap-12 md:gap-16 lg:gap-14 flex flex-col md:flex-row justify-center sm:justify-between items-center text-white">
-        {data.map((item, index) => {
-          return (
-            <div key={index} className="text-center space-y-2.5 md:space-y-1">
-              <h1 className="text-4xl font-semibold">{item.title}</h1>
-              <p className="opacity-65 font-thin">{item.subTitle}</p>
-            </div>
-          );
-        })}
-      </section>
-    </main>
+      </motion.div>
+
+      {/* VIDEO */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.7 }}
+        viewport={{ once: true }}
+        className="mt-20 flex justify-center"
+      >
+        <Video />
+      </motion.div>
+
+      {/* STATS */}
+      <motion.div
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+        variants={{
+          hidden: {},
+          show: {
+            transition: { staggerChildren: 0.2 },
+          },
+        }}
+        className="mt-24 grid grid-cols-1 md:grid-cols-3 gap-12 max-w-4xl mx-auto"
+      >
+        {data.map((item, index) => (
+          <motion.div
+            key={index}
+            variants={{
+              hidden: { opacity: 0, y: 30 },
+              show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+            }}
+            whileHover={{ y: -6 }}
+            className="text-center p-6 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 hover:border-green-400/40 transition-all duration-300"
+          >
+            <h3 className="text-4xl md:text-5xl font-semibold text-green-400">
+              {item.title}
+            </h3>
+            <p className="mt-3 text-white/70 font-light tracking-wide">
+              {item.subTitle}
+            </p>
+          </motion.div>
+        ))}
+      </motion.div>
+    </section>
   );
 };
 

@@ -1,9 +1,31 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
+
 import DocumentIcon from "../../assets/document.png";
 import PercentIcon from "../../assets/percent.png";
 import HandShakeIcon from "../../assets/hand-shake.png";
 import Route from "../../assets/route.png";
+
+const container = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const cardVariant = {
+  hidden: { opacity: 0, y: 40 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6 },
+  },
+};
 
 const Services = () => {
   const data = [
@@ -34,40 +56,66 @@ const Services = () => {
   ];
 
   return (
-    <main
+    <section
       id="service"
-      className="bg-[rgb(250,250,250)] scroll-mt-14 pt-14 pb-10 flex flex-col items-center justify-center"
+      className="bg-[rgb(250,250,250)] scroll-mt-20 py-20 px-6 lg:px-16"
     >
-      <div className="space-y-4 text-center">
-        <h1 className="text-5xl font-bold">What we Offer</h1>
-        <p className="text-[1.1rem] opacity-80">
-          Comprehensive solutions for business success.
+      {/* HEADER */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        className="text-center max-w-2xl mx-auto"
+      >
+        <h2 className="text-4xl md:text-5xl font-semibold tracking-tight">
+          What we <span className="text-green-500">Offer</span>
+        </h2>
+        <p className="mt-4 text-lg text-gray-600">
+          Comprehensive solutions designed to scale your business intelligently.
         </p>
-      </div>
-      <div className="w-full px-10 grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
+      </motion.div>
+
+      {/* GRID */}
+      <motion.div
+        variants={container}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+        className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8"
+      >
         {data.map((service, index) => (
-          <div
+          <motion.div
             key={index}
-            className="bg-[rgb(245,245,245)] p-6 rounded-3xl w-full h-fit space-y-5"
+            variants={cardVariant}
+            whileHover={{ y: -8 }}
+            transition={{ type: "spring", stiffness: 200 }}
+            className="group bg-[rgb(245,245,245)] p-8 rounded-3xl space-y-6 shadow-sm hover:shadow-xl transition-all duration-300"
           >
-            <div className="w-12 h-12 aspect-square bg-white rounded-full flex items-center justify-center">
+            {/* ICON */}
+            <div className="w-14 h-14 bg-white rounded-xl flex items-center justify-center shadow-sm group-hover:shadow-md transition">
               <Image
                 src={service.icon}
                 alt={service.title}
-                width={20}
-                height={20}
+                width={24}
+                height={24}
               />
             </div>
-            <div className="space-y-2">
-              <h2 className="text-xl">{service.title}</h2>
-              <p className="mt-2 text-sm leading-6 opacity-80 text-[0.9rem] ">
+
+            {/* TEXT */}
+            <div>
+              <h3 className="text-xl font-semibold text-gray-900">
+                {service.title}
+              </h3>
+
+              <p className="mt-3 text-gray-600 leading-relaxed text-[0.95rem]">
                 {service.description}
               </p>
             </div>
-          </div>
+          </motion.div>
         ))}
-      </div>
-    </main>
+      </motion.div>
+    </section>
   );
 };
 

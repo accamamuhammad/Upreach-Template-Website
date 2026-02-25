@@ -1,5 +1,9 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
+
 import Person1 from "../../assets/person1.png";
 import Person2 from "../../assets/person2.png";
 import Person3 from "../../assets/person3.png";
@@ -35,7 +39,7 @@ const Testimonials = () => {
       role: "Cafe Owner",
       icon: Person4,
       description:
-        "Their system improved our client engagement and lead conversions. The easy-to-use tools streamlined our entire sales process",
+        "Their system improved our client engagement and lead conversions. The easy-to-use tools streamlined our entire sales process.",
     },
     {
       title: "Mitchell Apparel",
@@ -54,44 +58,77 @@ const Testimonials = () => {
   ];
 
   return (
-    <main
+    <section
       id="testimonials"
-      className="w-screen h-fit scroll-mt-12 bg-white pt-14 pb-10 flex flex-col items-center justify-center"
+      className="bg-white py-24 px-6 lg:px-16 scroll-mt-24"
     >
-      <div className="space-y-4 text-center">
-        <h1 className="px-5  text-5xl font-bold text-[rgb(10,10,10)]">
-          What Our Clients Say
-        </h1>
-        <p className="text-lg opacity-80 text-[rgb(10,10,10)]">
-          Our clients words reflect our commitment to excellence.
+      {/* HEADER */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        className="text-center max-w-3xl mx-auto"
+      >
+        <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-[rgb(10,10,10)]">
+          What Our <span className="text-green-500">Clients Say</span>
+        </h2>
+
+        <p className="mt-5 text-lg text-gray-600">
+          Real experiences from businesses we’ve helped scale.
         </p>
-      </div>
-      <div className="w-full px-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
-        {data.map((service, index) => (
-          <div
+      </motion.div>
+
+      {/* GRID */}
+      <motion.div
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+        variants={{
+          hidden: {},
+          show: {
+            transition: { staggerChildren: 0.15 },
+          },
+        }}
+        className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto"
+      >
+        {data.map((item, index) => (
+          <motion.div
             key={index}
-            className="bg-[rgb(245,245,245)] px-6 py-5 rounded-3xl w-full h-fit space-y-5"
+            variants={{
+              hidden: { opacity: 0, y: 30 },
+              show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+            }}
+            whileHover={{ y: -8 }}
+            className="group bg-[rgb(245,245,245)] p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
           >
-            <p className="mt-2 text-sm leading-6 opacity-80 text-[0.9rem] ">
-              {service.description}
+            {/* Quote */}
+            <p className="text-gray-700 leading-relaxed text-[0.95rem]">
+              “{item.description}”
             </p>
-            <div className="flex gap-2.5 flex-row items-center justify-start">
+
+            {/* Person */}
+            <div className="mt-8 flex items-center gap-4">
               <Image
-                src={service.icon}
-                alt={service.title}
-                width={40}
-                height={40}
-                className="rounded-full aspect-square"
+                src={item.icon}
+                alt={item.title}
+                width={48}
+                height={48}
+                className="rounded-full object-cover"
               />
               <div>
-                <h1>{service.title}</h1>
-                <p className="opacity-65 text-sm">{service.role}</p>
+                <h4 className="font-semibold text-gray-900">
+                  {item.title}
+                </h4>
+                <p className="text-sm text-gray-500">
+                  {item.role}
+                </p>
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
-      </div>
-    </main>
+      </motion.div>
+    </section>
   );
 };
 

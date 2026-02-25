@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+
 import Plus from "../../assets/plus.png";
 import Close from "../../assets/close.png";
 
@@ -9,27 +11,32 @@ const faqs = [
   {
     question: "How does your marketing approach stand out from competitors?",
     answer:
-      "SaaS is subscription-based and centrally hosted. Users pay a recurring fee to access the software over the internet, eliminating the need for upfront costs and ongoing maintenance.",
+      "Our platform transforms marketing with data-driven insights, seamless integrations, and intuitive tools, giving your campaigns a competitive edge.",
   },
   {
     question: "What makes your lead generation strategies effective?",
-    answer: "",
+    answer:
+      "We leverage optimized funnels, automation, and targeted outreach to maximize high-quality leads while minimizing wasted effort.",
   },
   {
     question: "How do you accurately measure the success of a campaign?",
-    answer: "",
+    answer:
+      "Every campaign is tracked with analytics and KPIs, so you can see ROI, engagement metrics, and conversion performance in real-time.",
   },
   {
     question: "How can I easily get started with your services today?",
-    answer: "",
+    answer:
+      "Simply book a consultation through our website, and our team will guide you through a customized plan to get started quickly.",
   },
   {
     question: "What platforms do you specialize in for digital marketing?",
-    answer: "",
+    answer:
+      "We specialize in social media, paid ads, SEO, email campaigns, and emerging channels to reach your audience effectively.",
   },
   {
     question: "Do you offer tailored solutions for different industries?",
-    answer: "",
+    answer:
+      "Yes! Our strategies are customized based on your industry, target audience, and business goals for maximum impact.",
   },
 ];
 
@@ -41,39 +48,63 @@ const QandA = () => {
   };
 
   return (
-    <main className="bg-white pt-16 space-y-12 flex flex-col items-center justify-center">
-      <section className="space-y-4 text-center">
-        <h1 className="px-5 text-5xl font-bold text-[rgb(10,10,10)]">
-          Common Questions & Answers
-        </h1>
-        <p className="px-3 opacity-80 text-[rgb(10,10,10)]">
+    <section className="bg-white py-24 px-6 scroll-mt-24">
+      {/* HEADER */}
+      <div className="text-center max-w-3xl mx-auto mb-16">
+        <h2 className="text-4xl md:text-5xl font-semibold text-[rgb(10,10,10)]">
+          Common <span className="text-green-500">Questions & Answers</span>
+        </h2>
+        <p className="mt-4 text-gray-600 text-lg leading-relaxed">
           Find quick answers to common questions about our services and how we
-          <br className="hidden md:block" /> can help you achieve your goals.
+          can help you achieve your goals.
         </p>
-      </section>
-      <div className="max-w-3xl mx-auto p-6 w-full space-y-3">
+      </div>
+
+      {/* FAQ LIST */}
+      <div className="max-w-3xl mx-auto space-y-4">
         {faqs.map((faq, index) => (
-          <div key={index} className="bg-[rgb(245,245,245)] rounded-lg">
+          <motion.div
+            key={index}
+            layout
+            initial={{ borderRadius: 12 }}
+            className="bg-[rgb(245,245,245)] rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300"
+          >
             <button
               onClick={() => toggleFAQ(index)}
-              className="flex justify-between items-center w-full p-4 text-left"
+              className={`flex justify-between items-center w-full p-5 text-left transition-colors duration-200 ${
+                openIndex === index ? "bg-green-50" : ""
+              }`}
             >
               <span className="font-medium text-gray-900">{faq.question}</span>
               <Image
                 src={openIndex === index ? Close : Plus}
                 alt={openIndex === index ? "Close" : "Plus"}
-                width={15}
-                height={15}
-                className="cursor-pointer transition-transform duration-200 transform hover:scale-110 ml-1.5"
+                width={18}
+                height={18}
+                className={`cursor-pointer transition-transform duration-200 transform ${
+                  openIndex === index ? "rotate-45" : "rotate-0"
+                }`}
               />
             </button>
-            {openIndex === index && faq.answer && (
-              <div className="px-4 pb-4 text-gray-700">{faq.answer}</div>
-            )}
-          </div>
+
+            <AnimatePresence>
+              {openIndex === index && faq.answer && (
+                <motion.div
+                  key="content"
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.4 }}
+                  className="px-5 pb-5 text-gray-700 text-[0.95rem] leading-relaxed"
+                >
+                  {faq.answer}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.div>
         ))}
       </div>
-    </main>
+    </section>
   );
 };
 

@@ -22,16 +22,22 @@ body {
   background-color: var(--main-background);
   font-family: sans-serif;
 }
-
-.scrollbar-hide {
-  -ms-overflow-style: none; /* IE & Edge */
-  scrollbar-width: none; /* Firefox */
+@keyframes scroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
-.scrollbar-hide::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
+@keyframes subtlePulse {
+  0% { transform: scale(1); opacity: 0.4; }
+  70% { transform: scale(1.4); opacity: 0; }
+  100% { opacity: 0; }
 }
 
-html {
-  scroll-behavior: smooth;
+.animate-scroll {
+  animation: scroll 18s linear infinite;
 }
+
