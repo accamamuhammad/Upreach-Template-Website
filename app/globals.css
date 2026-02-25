@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Preline UI */
-@import "preline/variants.css";
 
 @font-face {
   font-family: "satoshi-variable";
